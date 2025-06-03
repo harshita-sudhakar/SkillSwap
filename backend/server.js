@@ -26,11 +26,11 @@ app.get("/", authenticateToken, (req, res) => {
 });
 
 app.post('/postjob', async (req, res) => {
-    const { title, description, points, email } = req.body;
+    const { title, description, points, email, name } = req.body;
 
     try {
-        const query = 'INSERT INTO jobs (title, job_description, points_asked, user_email) VALUES (?, ?, ?, ?)';
-        db.query(query, [title, description, points, email], (err, result) => {
+        const query = 'INSERT INTO jobs (title, job_description, points_asked, user_email, name) VALUES (?, ?, ?, ?, ?)';
+        db.query(query, [title, description, points, email, name], (err, result) => {
             if (err) {
                 throw err;
             }
@@ -77,7 +77,7 @@ app.post("/getjobs", (req, res) => {
     const { email } = req.body;
 
     try {
-        const query = 'SELECT * FROM jobs WHERE user_email != ?';
+        const query = 'SELECT * FROM jobs WHERE user_email != ? AND is_taken=0';
         db.query(query, [email], (err, results) => {
             if (err) {
                 throw err;
@@ -89,6 +89,102 @@ app.post("/getjobs", (req, res) => {
     }
 });
 
+app.post("/getname", (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'SELECT name FROM users WHERE email = ?';
+        db.query(query, [email], (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.json(results);
+        });
+    } catch (error) {
+        res.status(500).send('Error displaying jobs');
+    }
+});
+
+app.post('/transaction', async (req, res) => {
+    const { giver_email, buyer_email, job_id } = req.body;
+
+    try {
+        const query = 'INSERT INTO transactions (giver_email, buyer_email, job_id) VALUES (?, ?, ?)';
+        db.query(query, [giver_email, buyer_email, job_id], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.status(201).json({ message: 'transaction added successfully' });
+        });
+    } catch (error) {
+        res.status(500).send('error submitting transaction');
+    }
+});
+
+app.post('/pastjobs', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'SELECT * FROM jobs WHERE user_email = ? AND is_taken=1';
+        db.query(query, [email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).send('error giving past jobs');
+    }
+});
+
+app.post('/currentjobs', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'SELECT * FROM jobs WHERE user_email = ? AND is_taken=0';
+        db.query(query, [email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).send('error giving past jobs');
+    }
+});
+
+
+app.post('/updateistaken', async (req, res) => {
+    const { id } = req.body;
+
+    try {
+        const query = 'UPDATE jobs SET is_taken=1 WHERE id = ?';
+        db.query(query, [id], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.status(201).json({ message: 'points subtracted successfully' });
+        });
+    } catch (error) {
+        res.status(500).send('error subtracted points');
+    }
+});
+
+app.post('/updatepoints', async (req, res) => {
+    const { points, email } = req.body;
+
+    try {
+        const query = 'UPDATE users SET points = points - ? WHERE email = ?';
+        db.query(query, [points, email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.status(201).json({ message: 'points subtracted successfully' });
+        });
+    } catch (error) {
+        res.status(500).send('error subtracted points');
+    }
+});
 
 function authenticateToken(req, res, next)  {
     const authHeader = req.headers['authorization'];
