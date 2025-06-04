@@ -89,6 +89,39 @@ app.post("/getjobs", (req, res) => {
     }
 });
 
+app.post("/getjobfromid", (req, res) => {
+    const { id } = req.body;
+
+    try {
+        const query = 'SELECT * FROM jobs WHERE id=?';
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.json(results);
+        });
+    } catch (error) {
+        res.status(500).send('Error displaying jobs');
+    }
+});
+
+app.post("/getuserfromemail", (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'SELECT * FROM users WHERE email=?';
+        db.query(query, [email], (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.json(results);
+        });
+    } catch (error) {
+        res.status(500).send('Error displaying jobs');
+    }
+});
+
+
 app.post("/getname", (req, res) => {
     const { email } = req.body;
 
@@ -137,11 +170,82 @@ app.post('/pastjobs', async (req, res) => {
     }
 });
 
+/*app.post('/messages', (req, res) => {
+    const { senderEmail, receiverEmail, content } = req.body;
+    const query = `INSERT INTO messages (sender_email, receiver_email, content) VALUES (?, ?, ?)`;
+
+    db.query(query, [senderEmail, receiverEmail, content], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.status(201).json({ id: result.insertId });
+    });
+});
+
+app.get('/messages/:user1/:user2', (req, res) => {
+  const { user1, user2 } = req.params;
+  const query = 'SELECT * FROM messages WHERE (sender_email = ? AND receiver_email = ?) OR (sender_email = ? AND receiver_email = ?) ORDER BY timestamp ASC';
+  db.query(query, [user1, user2, user2, user1], (err, results) => {
+    if (err) {
+        return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
+});*/
+
+app.post('/updatenumber', async (req, res) => {
+    const { rate, email } = req.body;
+
+    try {
+        const query = 'UPDATE users SET rate = ? WHERE email = ?';
+        db.query(query, [rate, email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).send('error giving past jobs');
+    }
+});
+
+app.post('/updateratenumber', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'UPDATE users SET rateNumber = rateNumber+1 WHERE email = ?';
+        db.query(query, [email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).send('error giving past jobs');
+    }
+});
+
 app.post('/currentjobs', async (req, res) => {
     const { email } = req.body;
 
     try {
         const query = 'SELECT * FROM jobs WHERE user_email = ? AND is_taken=0';
+        db.query(query, [email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.json(result);
+        });
+    } catch (error) {
+        res.status(500).send('error giving past jobs');
+    }
+});
+
+app.post('/purchasedjobs', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const query = 'SELECT * FROM transactions WHERE buyer_email = ?';
         db.query(query, [email], (err, result) => {
             if (err) {
                 throw err;
