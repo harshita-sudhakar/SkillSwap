@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.buttonItem {
+    margin-top:-3px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItem:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.inputBox:focus {
+    outline: none;
+    border: 2px solid #EDD9A3;
+}
+
+
+.inputBox {
+    height:30px;
+    font-size:14pt;
+    margin-right: 5px;
+    border: 2px solid #443742;
+    font-family: 'Lora', serif;
+    width: 300px;
+}
+
+.userBox {
+    border: 2px solid #443742;
+    margin-top: 10px;
+    text-align: center;
+    background-color: #EDD9A3;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.buttonItemFour {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 100px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFour:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.buttonItemFive {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 120px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFive:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.buttonBottomLeft {
+    position: fixed;
+    bottom: 20px;
+    left: 5px;
+    display: flex;
+    gap: 10px;
+}

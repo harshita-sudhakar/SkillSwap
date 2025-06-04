@@ -290,6 +290,22 @@ app.post('/updatepoints', async (req, res) => {
     }
 });
 
+app.post('/earnpoints', async (req, res) => {
+    const { points, email } = req.body;
+
+    try {
+        const query = 'UPDATE users SET points = points + ? WHERE email = ?';
+        db.query(query, [points, email], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.status(201).json({ message: 'points subtracted successfully' });
+        });
+    } catch (error) {
+        res.status(500).send('error subtracted points');
+    }
+});
+
 function authenticateToken(req, res, next)  {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]

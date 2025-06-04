@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body {
+    background-color: #fcf9f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: x-large;
+    text-align: center;
+    color: #443742;
+    font-family: 'Lora', serif;
+}
+
+.container {
+    background-color: #fcf9f0;
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgb(98, 95, 95);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.inputBox:focus {
+    outline: none;
+    border: 2px solid #EDD9A3;
+}
+
+
+.inputBox {
+    height:30px;
+    font-size:14pt;
+    margin-right: 5px;
+    border: 2px solid #443742;
+    font-family: 'Lora', serif;
+    width: 300px;
+}
+
+sup {
+    color: red;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-align: left;
+    color: #846C5B;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+
+}
+
+.fullName {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonItem {
+    margin-top:-3px;
+    width: 150px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+}
+
+.buttonItem:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}

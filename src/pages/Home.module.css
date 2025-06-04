@@ -1,0 +1,39 @@
+.buttonItemFour {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 140px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFour:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.buttonItemFive {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 120px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFive:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
