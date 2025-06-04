@@ -66,6 +66,30 @@ function ModalBook ({value, buyerEmail, onClose}) {
             console.error("error sending data:", error);
         }
 
+        const inputFour = {
+            points: value.points_asked,
+            email: value.user_email,
+        };
+
+        console.log(value)
+
+        try {
+            const response = await fetch("http://localhost:3001/earnpoints", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(inputFour)
+            });
+
+            const data = await response.json();
+            if (data !== null) {
+                console.log(data);
+            }
+        } catch (error) {
+            console.error("error sending data:", error);
+        }
+
         const inputTwo = {
             points: value.points_asked,
             email: buyerEmail,
@@ -89,6 +113,7 @@ function ModalBook ({value, buyerEmail, onClose}) {
         } catch (error) {
             console.error("error sending data:", error);
         }
+
     };
 
     return (
