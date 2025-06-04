@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 10px;
+    justify-content: center;
+}
+
+.indivJob {
+    border: 2px solid black;
+    padding: 9px;
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #edd9a3;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.description {
+    word-wrap: break-word;
+}
+
+.name {
+    text-align: center;
+}
+
+.bookNow {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.buttonItemFour {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 140px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFour:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.buttonItemFive {
+    margin-top: 3px;
+    margin-left: 20px;
+    width: 120px;
+    height: 45px;
+    font-size: 15px;
+    color: #443742;
+    background-color: #CEA07E;
+    border: 2px solid #CEA07E;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.buttonItemFive:hover {
+    background-color: #bc8f6f;
+    border: 2px solid #bc8f6f;
+}
+
+.buttonBottomLeft {
+    position: fixed;
+    bottom: 20px;
+    left: 5px;
+    display: flex;
+    gap: 10px;
+}
